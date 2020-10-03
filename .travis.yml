@@ -4,9 +4,6 @@ stages:
   - prepare
   - build
 
-services:
-  - docker
-
 jobs:
   include:
     - stage: prepare
