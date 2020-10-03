@@ -1,0 +1,23 @@
+dist: xenial
+
+stages:
+  - prepare
+  - build
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: prepare
+      before_install:
+        - sudo apt-get update
+      install:
+        - sudo apt-get -y install g++
+    - stage: build
+      before_script:
+        - g++ --version
+      script:
+        - g++ -o app app.cpp
+      after_script:
+        - ./app
